@@ -18,8 +18,10 @@ class CreateComments extends Migration
             $table->string('name');
             $table->unsignedBigInteger('post_id');
             $table->string('content');
+            $table->timestamps();
             $table->foreign('post_id')->references('id')->on('posts')
                 ->onDelete('cascade');
+            
         });
     }
 

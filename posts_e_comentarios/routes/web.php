@@ -23,9 +23,7 @@ Route::get('register',function(){
     return view('auth.register');
 })->name('register');
 
-Route::post('post.store',function(){
-    return "chou ";
-})->name('post.store');
+Route::post('post.store','PostsController')->name('post.store');
 
 Route::post('comenatrio.store',function(){
     return 'teste';

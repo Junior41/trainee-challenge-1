@@ -15,6 +15,7 @@
             <div class="col-12">
                 <div class="card">
                     <form action="{{ route('post.store') }}" method="POST">
+                        @csrf
                         <div class="card-header">Criar nova postagem</div>
                         <div class="card-body">
                             <label for="conteudo">Postagem</label>
