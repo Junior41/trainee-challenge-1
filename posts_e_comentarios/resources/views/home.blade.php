@@ -39,16 +39,21 @@
                        {{$posts[$i]->content}}
                     </p>
                     <hr>
-                    <a href="#comentarios-1" data-toggle="collapse" aria-expanded="false" aria-controls="comentarios-1">
+                    <a href="#comentarios-{{$posts[$i]->id}}" data-toggle="collapse" aria-expanded="false" aria-controls="comentarios-{{$posts[$i]->id}}">
                         <small>
                             comentários ({{count($comments[$i])}})
                         </small>
                     </a>
                     @for($j = 0; $j < count($comments[$i]);$j++)
-                        <div class="my-2 comentarios collapse" id="comentarios-1">
-                            -({{$comments[$i][$j]->name}})
-                                 {{$comments[$i][$j]->content}}
-                            
+                        <div class="my-2 comentarios collapse" id="comentarios-{{$posts[$i]->id}}">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5>Autor: <small>{{$comments[$i][$j]->name}}</small></h5>
+                                    <p>
+                                       {{$comments[$i][$j]->content}}
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     @endfor
                     @auth

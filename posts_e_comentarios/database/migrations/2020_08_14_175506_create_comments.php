@@ -17,7 +17,7 @@ class CreateComments extends Migration
             $table->id('id');
             $table->string('name');
             $table->unsignedBigInteger('post_id');
-            $table->string('content');
+            $table->text('content');
             $table->timestamps();
             $table->foreign('post_id')->references('id')->on('posts')
                 ->onDelete('cascade');
