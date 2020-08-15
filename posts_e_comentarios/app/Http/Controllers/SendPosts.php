@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Post;
+use Illuminate\Support\Facades\Auth;
 
-class PostsController extends Controller
+class SendPosts extends Controller
 {
     /**
      * Handle the incoming request.
@@ -18,8 +19,8 @@ class PostsController extends Controller
     {
         $post = new Post();
         $post->content = $request->conteudo;
-        $post->name = "Junior Brandão";
+        $post->name = Auth::user()->name;
         $post->save();
-        return view('home');
+        return redirect('/home',301);
     }
 }

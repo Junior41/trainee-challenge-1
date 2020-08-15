@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CommentsController extends Controller
+use App\Post;
+use App\Comment;
+
+class mainController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +16,13 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+        $comments = [];
+        for($i = 0; $i < count($posts);$i++){
+            array_push($comments,0);
+            $comments[$i] = Comment::where('post_id',$posts[$i]->id)->get();
+        }
+        return view('home',compact('posts','comments'));
     }
 
     /**

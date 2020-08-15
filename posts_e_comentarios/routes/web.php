@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'mainController@index')->name('home');
 Route::get('login',function(){
     return view('auth.login');
 })->name('login');
@@ -23,11 +21,9 @@ Route::get('register',function(){
     return view('auth.register');
 })->name('register');
 
-Route::post('post.store','PostsController')->name('post.store');
 
-Route::post('comenatrio.store',function(){
-    return 'teste';
-})->name('comentario.store');
+Route::post('post.store','SendPosts')->name('post.store');
+Route::post('comentario.store/{id}','SendComments')->name('comentario.store');
 
 
 Auth::routes();
