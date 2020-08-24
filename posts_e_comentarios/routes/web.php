@@ -13,15 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'mainController@index')->name('home');
-Route::get('login',function(){
-    return view('auth.login');
-})->name('login');
-Route::get('register',function(){
-    return view('auth.register');
-})->name('register');
-
-
 Route::post('post.store','SendPosts')->name('post.store');
 Route::post('comentario.store/{id}','SendComments')->name('comentario.store');
 
@@ -29,3 +20,4 @@ Route::post('comentario.store/{id}','SendComments')->name('comentario.store');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@home')->name('home');

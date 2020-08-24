@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('home');
     }
 
     /**
@@ -24,6 +24,15 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $posts = Post::all();
+        $comments = [];
+        for($i = 0; $i < count($posts);$i++){
+            array_push($comments,0);
+            $comments[$i] = Comment::where('post_id',$posts[$i]->id)->get();
+        }
+        return view('home',compact('posts','comments'));
+    }
+    public function home(){
         $posts = Post::all();
         $comments = [];
         for($i = 0; $i < count($posts);$i++){
